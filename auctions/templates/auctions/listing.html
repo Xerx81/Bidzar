@@ -1,0 +1,110 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Listings
+{% endblock %}
+
+{% block body %}
+    <div style="margin: 10px">
+        <h2>
+            Listing: {{ listing.title }}
+            {% if listing.active %}
+                {% if listing.seller == request.user %}
+                    <form action="{% url 'close_auctions' id=listing.id %}" method="POST" style="display: inline-block">
+                        {% csrf_token %}
+                        <input type="submit" name="close" value="Close Auction" class="btn btn-outline-danger">   
+                    </form>
+                {% endif %} 
+            {% else %} 
+                <span class="alert alert-warning" style="font-size: 15px;">Closed!</span>        
+            {% endif %}    
+        </h2>
+        
+        
+        <div class="listing_img">
+            {% if listing.image %}
+                <img src="{{ listing.image }}" alt="listing image">
+            {% else %}
+                <a href="{% url 'listing' id=listing.id %}"><img src="https://bubbleerp.sysfosolutions.com/img/default-pro.jpg" alt="default_img"></a>
+            {% endif %}
+        </div>
+        <div class="details">
+            {% if user.is_authenticated %}
+                {% if listing.active %}
+                    <form action="{% url 'listing' id=listing.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if watchlisted %}
+                        <input type="submit" name="watchlist" class="btn btn-danger" value="Remove From Watchlist">
+                        {% else %}
+                        <input type="submit" name="watchlist" class="btn btn-success" value="Watchlist">
+                        {% endif %}
+                    </form>
+                    {{ success }}
+                    <br>
+                {% else %}
+                    {% if winner != "None" %}
+                        <span class="alert alert-success"> Winner of the auction is <strong>{{ winner }}</strong>!</span>
+                        <br><br>
+                {% else %}
+                    <span class="alert alert-info">No bid had been placed!</span>
+                    <br><br>
+                    {% endif %}    
+                {% endif %}
+            {% endif %}
+
+            <p>{{ listing.description }}</p>
+            <h4>{{ listing.price }}$</h4>
+            <br>
+            {% if listing.seller != request.user %}
+                {% if listing.active %}
+                    <form action="{% url 'bid' id=listing.id %}" method="POST">
+                        {% csrf_token %}
+                        <label  for="bid">{{ total_bids }} bid(s) so far</label><br>
+
+                        <input id="bid" name="bid" type="number" step="0.01" placeholder="Place Bid" required>
+                        <button id="bid-btn" type="submit" class="btn btn-warning">Place Bid</button>
+                        <br>
+                        {% if message == "unsuccessful" %}
+                            <span style="color: Red">Bid must be higher than current amount!</span>
+                        {% elif message == "successful" %}
+                            <span style="color: rgb(0, 193, 0)">Bid placed succesfully!</span>
+                        {% endif %}
+                    </form>
+                    <br>
+                {% endif %}
+            {% endif %}
+            <h4>Details:</h4>
+            <div class="list">
+                <ul>
+                    <li>Listed By: {{ listing.seller }}</li>
+                    {% if listing.category != None %}
+                        <li>Category: {{ listing.category }}</li>
+                    {% else %}
+                        <li>Category: Not Listed</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="form-floating">
+            <form action="{% url 'comments' id=listing.id %}" method="POST">
+                {% csrf_token %}
+                <textarea class="form-control" placeholder="Leave a comment here" name="comment"></textarea>
+                <button type="submit" class="btn btn-secondary">Comment</button>
+            </form>
+        </div>
+        <div class="comment_section">
+            <h5>All Comments</h5>
+            <hr>
+            {% if comments %}
+                {% for comment in comments %}
+                    <strong>{{ comment.commenter }}</strong>
+                    <br>
+                    <li>{{ comment.comment }}</li>
+                    <br><br>
+                {% endfor %}
+            {% else %}
+                No comments yet
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

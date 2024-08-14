@@ -1,0 +1,127 @@
+.body {
+    padding: 10px;
+}
+
+.top-bg {
+    background-color:darkseagreen;
+}
+
+form div {
+    margin: 8px 0rem;
+}
+
+.form-select {
+    width: 50%;
+    height: 38px;
+    border: 1px solid #CED4DA;
+    border-radius: 5px;
+}
+
+.index_listings {
+    margin: 2rem 2rem;
+    min-height: 13rem;
+}
+
+.index_listing_img {
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin-right: 5rem;
+}
+
+.index_listing_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 800px) {
+    .content {
+        display:inline-block;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.listing_img {
+    float: left;
+    width: 30rem;
+    height: 30rem;
+    margin: 1rem 5rem 0rem 0rem;
+}
+
+.listing_img img {
+    width: 100%;
+    height: 95%;
+    object-fit: contain;
+}
+
+.details {
+    margin: 2rem;
+}
+
+@media (max-width: 900px) {
+    .listing_img {
+        width: 100%;
+        max-height: 500px;
+    }
+
+    .details {
+        margin: 2rem 0.5rem;
+    }
+}
+
+#bid {
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 17px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 0rem 1rem;
+    transition: 0.1s;
+}
+
+#bid:focus {
+    outline: none;
+    border-color: #ffbf00;
+}
+
+#bid-btn {
+    position: absolute;
+    padding: 7.2px 10px;
+    margin-left: 5px;
+}
+
+.list {
+    display: inline-block;
+}
+
+
+.categories {
+    text-align: center;
+    margin: 2rem 1rem;
+    font-size: 25px;
+}
+
+.categories input {
+    width: 100%;
+}
+
+.form-floating {
+    margin: 2rem auto;
+}
+
+.comment_section {
+    margin: 3rem 0.5rem;
+}
+
+.form-floating button {
+    margin-top: 5px;
+}

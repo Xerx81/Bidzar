@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Create Listings
+{% endblock %}
+
+{% block body %}
+    <h2>Create Listing</h2> 
+    <form class="row g-3" action="/create" method="POST">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label class="form-label" for="title">Title:</label>
+            <input class="form-control" type="text" name="title" placeholder="Title" autocomplete="off" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="price">Starting Bid:</label>
+            <input class="form-control" type="number" step="0.01" name="price" placeholder="Price" autocomplete="off" required> 
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="description">Description:</label>
+            <input class="form-control" type="text" name="description" placeholder="Description" autocomplete="off" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="image">Image URL:</label>
+            <input class="form-control" type="text" name="image" placeholder="Enter image url here (optional)" autocomplete="off">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="category">Category:</label><br>
+            <select class="form-select" name="category" autocomplete="off">
+                <option disabled selected>--Select--</option>
+                {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+    {% endblock %}

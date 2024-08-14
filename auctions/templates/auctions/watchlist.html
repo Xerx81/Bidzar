@@ -1,0 +1,35 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Watchlist
+{% endblock %}
+
+{% block body %}
+    <h2>Watchlist</h2>
+    {% if not listings %}
+        <h5 style="text-align: center;">It's empty. Explore some listings.</h5>
+    {% else %}    
+        {% for listing in listings %}
+            <div class="index_listings">
+                <div class="index_listing_img">
+                    {% if listing.image %}
+                        <a href="{% url 'listing' id=listing.id %}"><img src="{{ listing.image }}" alt="{{ listing.title }}"></a>
+                    {% else %}
+                        <a href="{% url 'listing' id=listing.id %}"><img src="https://bubbleerp.sysfosolutions.com/img/default-pro.jpg" alt="default_img"></a>
+                    {% endif %}
+                </div>
+                <div class="content">
+                    <a href="{% url 'listing' id=listing.id %}"><h3>{{ listing.title }}</h3></a>
+                    <h6>{{ listing.price }}$</h6>
+                    <p>{{ listing.description }}<p>
+                    <span style="color: gray">Created on: {{ listing.time }}</span><br><br>    
+                    {% if not listing.active %}
+                        <span class="alert alert-warning">Closed!</span>
+                    {% endif %}    
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    
+{% endblock %}
