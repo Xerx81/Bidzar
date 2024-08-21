@@ -29,8 +29,9 @@
 
 Here are some screenshots of the Tentips website to give you a visual overview of its user interface and features:
 
-![Active Listings](https://github.com/Yuviio/Bidzar/assets/169070018/b47bac28-7381-45a1-83a1-3c68ed81ba24)
-![Listing](https://github.com/Yuviio/Bidzar/assets/169070018/879fb350-3e05-4da6-bbf7-d125a298be4a)
+![Active Listings](https://github.com/user-attachments/assets/aa4acb05-72f3-4f92-ae93-610255439480)
+![Listing](https://github.com/user-attachments/assets/b750d51e-357b-4ec5-a37f-c1b4a2f6d643)
+
 
 ## Source Code
 
