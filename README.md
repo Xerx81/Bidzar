@@ -27,8 +27,6 @@
 
 ## Website Screenshots
 
-Here are some screenshots of the Tentips website to give you a visual overview of its user interface and features:
-
 ![Active Listings](https://github.com/user-attachments/assets/aa4acb05-72f3-4f92-ae93-610255439480)
 ![Listing](https://github.com/user-attachments/assets/b750d51e-357b-4ec5-a37f-c1b4a2f6d643)
 
