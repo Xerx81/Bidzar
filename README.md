@@ -36,4 +36,4 @@
  Clone or download the Bidzar repository from [GitHub](https://github.com/Xerx81/Bidzar-old.git).
 
    ```bash
-   git clone https://github.com/Yuviio/Bidzar.git
+   git clone https://github.com/Xerx81/Bidzar.git
